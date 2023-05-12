@@ -10,12 +10,14 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
   login(@Request() req): any {
-    return { msg: 'Logged in!' };
+    return { msg: 'Logged in!' }; //TODO: return JWT access token
   }
 
-  @UseGuards(AuthenticatedGuard)
+  // For sessions
+  //@UseGuards(AuthenticatedGuard)
   @Get('protected')
   getHello(@Request() req): string {
+    //TODO: require a Bearer token, validate token
     return req.user;
   }
 }
