@@ -17,5 +17,6 @@ import { JwtModule } from '@nestjs/jwt';
     }),
   ],
   providers: [AuthService, LocalStrategy], // SessionSerializer removed from providers
+  exports: [AuthService],
 })
 export class AuthModule {}
