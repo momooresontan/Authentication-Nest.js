@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthenticatedGuard } from './auth/authenticated.guard';
 import { AuthService } from './auth/auth.service';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 @Controller()
 export class AppController {
@@ -20,6 +21,7 @@ export class AppController {
 
   // For sessions
   //@UseGuards(AuthenticatedGuard)
+  @UseGuards(JwtAuthGuard)
   @Get('protected')
   getHello(@Request() req): string {
     //TODO: require a Bearer token, validate token
